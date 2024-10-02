@@ -1,0 +1,33 @@
+package:
+  name: optimum-quanto
+  version: "0.2.5"
+
+source:
+  path: .
+
+build:
+  noarch: python
+  script: python -m pip install .
+
+requirements:
+  build:
+    - python
+    - pip
+    - setuptools>65.5.1
+    - setuptools_scm
+  run:
+    - python>=3.9.0
+    - conda-forge::pytorch>=2.4.0  # this is `torch` in the pyproject.toml, but on conda it's `pytorch`
+    - ninja
+    - numpy
+    - safetensors
+    - huggingface_hub
+
+test:
+  imports:
+    - optimum.quanto
+
+about:
+  home: https://github.com/huggingface/optimum-quanto
+  license: Apache-2.0
+  summary: "A pytorch quantization backend for optimum."
